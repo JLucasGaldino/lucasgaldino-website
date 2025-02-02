@@ -1,5 +1,17 @@
 ---
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import '../styles/global.css';
 
+const pageTitle = "About";
+
+const identity = {
+	fullName: "Lucas Galdino",
+	country: "Portugal",
+};
+const includeTitle = true; // This is just for later reference of Astro's capabilities.
+
+const cssColor = "red";
 ---
 
 <html lang="en">
@@ -8,18 +20,16 @@
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="viewport" content="width=device-width" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
+		<title>{pageTitle}</title>
 	</head>
 	<body>
-		<a href="/">Home</a>
-		<a href="/about/">About</a>
-		<a href="/blog/">Blog</a>
-		<h1>About</h1>
-		<p>
-			My name is Lucas Galdino. I'm a Brazilian-Canadian student of
-			biomedical engineering and data science living in Portugal. I also
-			play music and am an Orthodox Christian. Welcome to my personal
-			website and blog.
+		<Header />
+		{includeTitle && <h1>{pageTitle}</h1>}
+		<p class="whoami">
+			My name is {identity.fullName}. I'm a Brazilian-Canadian student of
+			biomedical engineering and data science living in
+			{identity.country}. I also play music and am an Orthodox Christian.
+			Welcome to my personal website and blog.
 		</p>
 		<p>
 			This place is both my portfolio and personal blog. Here, you can
@@ -31,5 +41,9 @@
 			or enjoyable. This is an experiment. I don't know where it will
 			lead.
 		</p>
+		<Footer />
+		<script>
+		 import "../scripts/menu.js";
+		</script>
 	</body>
 </html>
